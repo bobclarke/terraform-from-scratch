@@ -1,1 +1,1 @@
-# -terraform-from-scratch
+# terraform-from-scratch
