@@ -1,6 +1,6 @@
 resource "google_container_cluster" "k8s_cluster" {
   count              = "${var.enabled}"
-  name               = "terraform-from-scratch-k8s-cluster"
+  name               = "${var.project-name}-k8s-cluster"
   //zone               = "europe-west2-a"
   location               = "europe-west2-a"
   initial_node_count = "3" 
