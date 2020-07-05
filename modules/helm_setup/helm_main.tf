@@ -1,4 +1,10 @@
 
+resource null_resource "deps" {
+  provisioner "local-exec" {
+    command = "echo ${var.k8s-cluster-id}"
+  }
+}
+
 
 // Create a secret for the Tiller service account 
 resource "kubernetes_secret" "tiller-sa-secret" {
@@ -7,6 +13,7 @@ resource "kubernetes_secret" "tiller-sa-secret" {
     name        = "tiller-sa"
     namespace   = "kube-system"
   }
+  depends_on    = ["null_resource.deps"]
 }
 
 
@@ -40,7 +47,7 @@ resource "kubernetes_cluster_role_binding" "tiller-binding" {
   }
   subject {
       kind = "ServiceAccount"
-      name = "tiller"
+      name = "${kubernetes_service_account.tiller.metadata.0.name}"
       namespace = "kube-system"
   }
   subject {
@@ -50,24 +57,6 @@ resource "kubernetes_cluster_role_binding" "tiller-binding" {
   }
 }
 
-data "terraform_remote_state" "rs" {
-  count = "${var.enabled}"
-  backend = "gcs"
-  config = {
-    bucket                    = "terraform-from-scratch-remote-state"
-    prefix                    = "terraform"
-    project                   = "terraform-from-scratch-remote-state"
-    credentials               = "/Users/clarkeb/gcloud/keys/terraform-from-scratch-sa.json"
-  }
-}
-
-provider "helm" {
-  service_account = "${kubernetes_service_account.tiller.metadata.0.name}"
- 
-  kubernetes {
-  host       = "${concat( "https://", "${data.terraform_remote_state.rs.outputs.k8s_endpoint}" ) }"
-  client_certificate      = "${data.terraform_remote_state.rs.outputs.k8s_client_certificate}"
-  client_key              = "${data.terraform_remote_state.rs.outputs.k8s_client_key}"
-  cluster_ca_certificate  = "${data.terraform_remote_state.rs.outputs.k8s_client_ca_certificate}"
-  }
+output "tiller_id" {
+  value = "${join("", kubernetes_cluster_role_binding.tiller-binding.*.id )}"
 }

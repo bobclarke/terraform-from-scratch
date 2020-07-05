@@ -1,8 +1,8 @@
 terraform {
   backend "gcs" {
-    bucket                    = "terraform-from-scratch-remote-state"
+    bucket                    = "kitchen-terraform-remote-state"
     prefix                    = "terraform"
-    project                   = "terraform-from-scratch-remote-state"
-    credentials               = "/Users/clarkeb/gcloud/keys/terraform-from-scratch-sa.json"
+    project                   = "kitchen-terraform"
+    credentials               = "/Users/clarkeb/gcloud/keys/kitchen-terraform-sa.json"
   }
 }

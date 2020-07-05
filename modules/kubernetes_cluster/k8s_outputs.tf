@@ -1,5 +1,9 @@
 
 
+output "id" {
+    value       = "${join("", google_container_cluster.k8s_cluster.*.id )}"
+}
+
 output "endpoint" {
     value       = "${join("", google_container_cluster.k8s_cluster.*.endpoint)}"
 }
