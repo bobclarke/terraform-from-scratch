@@ -1,3 +1,3 @@
 variable project-name {
-  default         = "terraform-from-scratch"
+  default         = "tf-from-scratch"
 }

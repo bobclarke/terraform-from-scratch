@@ -54,10 +54,10 @@ data "terraform_remote_state" "rs" {
   count = "${var.enabled}"
   backend = "gcs"
   config = {
-    bucket                    = "terraform-from-scratch-remote-state"
-    prefix                    = "terraform"
-    project                   = "terraform-from-scratch-remote-state"
-    credentials               = "/Users/clarkeb/gcloud/keys/terraform-from-scratch-sa.json"
+    bucket                    = "tf-from-scratch-remote-state"
+    //prefix                    = "terraform"
+    project                   = "tf-from-scratch"
+    credentials               = "/Users/clarkeb/gcloud/keys/tf-from-scratch-sa.json"
   }
 }
 

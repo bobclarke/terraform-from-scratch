@@ -122,7 +122,7 @@ resource "google_container_cluster" "k8s_cluster" {
   name               = "terraform-from-scratch-k8s-cluster"
   zone               = "europe-west2-a"
   initial_node_count = "3" 
-  project            = "terraform-from-scratch"
+  project            = "tf-from-scratch"
 
 
   node_config {
