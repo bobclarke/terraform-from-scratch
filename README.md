@@ -6,6 +6,7 @@
 * gcloud CLI
 * kubectl 
 
+
 ## Set up GCP project and service account:
 In the GCP console create a new Google project
 Then login with the cloud CLI:
