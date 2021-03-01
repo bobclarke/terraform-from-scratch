@@ -1,5 +1,7 @@
 # terraform-from-scratch
 [![GitHub issues](https://img.shields.io/github/issues/bobclarke/test)](https://github.com/bobclarke/test/issues)
+[![Github All Releases](https://img.shields.io/github/downloads/bobclarke/terraform-from-scratch/total.svg)]()
+
 
 ## pre reqs:
 * A GCP account
