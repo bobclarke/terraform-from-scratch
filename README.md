@@ -1,5 +1,6 @@
 # terraform-from-scratch
 [![GitHub issues](https://img.shields.io/github/issues/bobclarke/test)](https://github.com/bobclarke/test/issues)
+[![GitHub issues](https://img.shields.io/github/issues/bobclarke/test/total.svg)]()
 [![Github All Releases](https://img.shields.io/github/downloads/bobclarke/terraform-from-scratch/total.svg)]()
 
 
