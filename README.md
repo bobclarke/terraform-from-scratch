@@ -2,7 +2,6 @@
 
 # terraform-from-scratch
 
-
 ## pre reqs:
 * A GCP account
 * Terraform v0.11.11
