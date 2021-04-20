@@ -1,0 +1,22 @@
+name: Test001
+on:
+  push:
+    tags:
+      - 'd*'
+
+env:
+  GITHUB_SHA: ${{ github.sha }}
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Determing tag type
+      run: |
+
+        if [[ $GITHUB_REF == refs/tags/* ]]; then
+          echo "IMAGE_TAG=sha-${GITHUB_SHA::8}"
+        elif [[ $GITHUB_REF == refs/heads/* ]]; then
+          echo IMAGE_TAG=${GITHUB_REF#refs/heads/} | sed -r 's#/+#-#g'
+        fi
