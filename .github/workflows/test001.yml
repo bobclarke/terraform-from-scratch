@@ -3,6 +3,8 @@ on:
   push:
     tags:
       - 'd*'
+    branches:
+      - master
 
 env:
   GITHUB_SHA: ${{ github.sha }}
